@@ -1,16 +1,5 @@
 # Java Spring Boot - Mini DevOps CI/CD Assessment
 
-## Technology Stack
-
-- Java 17
-- Spring Boot 3.x
-- Maven
-- Docker
-- Jenkins
-- Kubernetes
-
----
-
 # Objective
 
 Build an end-to-end CI/CD pipeline to automate the build, Docker image creation, Docker image push, and Kubernetes deployment of a Spring Boot Inventory REST API.
@@ -29,24 +18,7 @@ Use an in-memory list. No database is required.
 ---
 
 ## Module 1 - Run the Application
-
-Build
-
-mvn clean package
-
-Run
-
-mvn spring-boot:run
-
-Application URL
-
-http://localhost:8080
-
-Verify
-
-GET http://localhost:8080/health
-GET http://localhost:8080/products
-
+Run using the jenkins Server on Local Host (8080)
 ---
 
 ## Module 2 - Dockerize the Application
@@ -62,6 +34,7 @@ Verify that:
 ---
 
 ## Module 3 - Jenkins Pipeline
+//Due to unavailability of creds. Commented out the further parts
 
 Create a Declarative "Jenkinsfile" with the following stages:
 
