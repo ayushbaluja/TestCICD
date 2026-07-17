@@ -1,26 +1,27 @@
 pipeline {
     agent any
+
     stages {
-        stage('checkout') {
+        stage('Checkout') {
             steps {
-                checkout main
+                checkout scm
             }
         }
-        stage('Mvn build') {
+        stage('Maven Build') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean package -DskipTests'
             }
         }
         stage('Docker Build') {
             steps {
-                sh "docker build -t your-dockerhub-username/java-inventory-api:${BUILD_NUMBER} ."
+                sh "docker build -t ayushbaluja/java-inventory-api:${BUILD_NUMBER} ."
             }
         }
         stage('Docker Push') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'DOCKER_USER', passwordVariable: 'DOCKER_PASS')]) {
-                    sh "echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin"
-                    sh "docker push your-dockerhub-username/java-inventory-api:${BUILD_NUMBER}"
+                    sh 'echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin'
+                    sh "docker push ayushbaluja/java-inventory-api:${BUILD_NUMBER}"
                 }
             }
         }
