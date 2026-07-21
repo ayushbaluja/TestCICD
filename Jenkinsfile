@@ -24,7 +24,7 @@ pipeline {
                 docker run -d \
                     --name inventory-app \
                     -p 8080:8080 \
-                    inventory-api:${BUILD_NUMBER}
+                    inventory-app:${BUILD_NUMBER}
                 '''
             }
         }        
