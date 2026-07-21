@@ -23,7 +23,7 @@ pipeline {
                 docker rm -f inventory-app || true
                 docker run -d \
                     --name inventory-app \
-                    -p 8080:8080 \
+                    -p 8081:8080 \
                     inventory-app:${BUILD_NUMBER}
                 '''
             }
